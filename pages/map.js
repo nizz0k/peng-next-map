@@ -1,6 +1,18 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic';
-const mapPage = () =>{
+import { loadPoints } from '../lib/loadpoints';
+
+
+export async function getStaticProps(){
+    const points = await loadPoints()
+    return {props: points}
+}
+
+
+
+const mapPage = (props) =>{
+
+
     const MapWithNoSSR = dynamic(() => import("../components/Map"), {
         ssr: false
       });
@@ -8,11 +20,10 @@ const mapPage = () =>{
     return (
         <div>
         <Head>
-        <title>About</title>
+        <title>Map</title>
         </Head>
-        <h1>Map of Peng spots</h1>
-        <p>Map should go here!</p>
-        <MapWithNoSSR />
+        <h1>Map of Peng art in Frankfurt</h1>
+        <MapWithNoSSR points={props} />
         </div>
     )
 }

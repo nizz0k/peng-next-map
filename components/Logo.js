@@ -1,8 +1,8 @@
-import Logo from '../public/logo.svg'
+import siteLogo from '../public/logo.svg'
 
 const Logo = () => {
     <div>
-        <Logo />
+        <siteLogo />
     </div>
 }
 

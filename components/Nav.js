@@ -6,14 +6,16 @@ import navStyles from '../styles/Nav.module.css'
 
 const Nav = () =>{
 
-const [isNavExpanded, setIsNavExpanded] = useState(false)
+const [isNavExpanded, setIsNavExpanded] = useState(true)
 return(
 <div>
 <nav className={navStyles.nav}>
 <SiteLogo />
 <button className={navStyles.hamburger} onClick={() => {
-setIsNavExpanded(!isNavExpanded);
-}}>
+          setIsNavExpanded(!isNavExpanded);
+          console.log("clicked");
+          console.log(isNavExpanded);
+        }}>
 {/* icon from heroicons.com */}
 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
   <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -21,6 +23,7 @@ setIsNavExpanded(!isNavExpanded);
 
 </button>
 <div className={navStyles.navigation}>
+    {isNavExpanded && 
     <ul className={navStyles.menu}>
         <li className={navStyles.links}>
             <Link href='/'>
@@ -38,6 +41,7 @@ setIsNavExpanded(!isNavExpanded);
                 </Link>
         </li>
     </ul>
+}
 </div>
 </nav>
 </div>
