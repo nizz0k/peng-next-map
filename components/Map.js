@@ -60,25 +60,27 @@ const onMouseOver = (e) => {
 }
 
 
-
-function zoomToFeature (e) {
-  console.log('onClick', e)
-  const clickedUrl = e.target.feature.properties.filename
-  const type = e.target.feature.properties.art_type
-  const artDate = e.target.feature.properties.timestamp
- setShow(true)
- setModal({...modal, image: clickedUrl, type: type, date: artDate })
- 
-}
+// Come back to this muppet
+//function zoomToFeature (e) {
+//  console.log('onClick', e)
+//  const clickedUrl = e.target.feature.properties.filename
+//  const type = e.target.feature.properties.art_type
+//  const artDate = e.target.feature.properties.timestamp
+// setShow(true)
+// setModal({...modal, image: clickedUrl, type: type, date: artDate })
+//}
 
 //console.log(props)
 console.log("outside", modal)
 
 function onEachFeature(feature, layer){
+  if(feature.properties){
+    layer.bindPopup("<div class='popupImage'</div><img src=" + "https://d2qr25zh4rluwu.cloudfront.net/" + encodeURI(feature.properties.filename) + ".jpg " + "alt='peng spot photo'" + "height='200px'"  + " " + ">" + "<div>" + "Type:" + feature.properties.art_type + "</div><div>" + "Date Seen: " + feature.properties.timestamp + " </div>")
+  }
   layer.on({
       mouseover: onMouseOver,
       mouseout: onMouseOut,
-      click: zoomToFeature
+      //click: zoomToFeature
   });
 }
 
